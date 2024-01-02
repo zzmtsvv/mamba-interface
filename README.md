@@ -7,5 +7,5 @@ jax, flax or state-space models[2].
 Feel free to contact me on any mistakes you find :)
 
 ## References
-[1] - Gu, Dao et al. (2023). [https://arxiv.org/abs/2312.00752](Mamba: Linear-Time Sequence Modeling with Selective State Spaces.)
-[2] Gu et al. (2022). [https://arxiv.org/abs/2111.00396](Efficiently Modeling Long Sequences with Structured State Spaces)
+[1] - Gu, Dao et al. (2023). [Mamba: Linear-Time Sequence Modeling with Selective State Spaces.](https://arxiv.org/abs/2312.00752) <br/>
+[2] Gu et al. (2022). [Efficiently Modeling Long Sequences with Structured State Spaces](https://arxiv.org/abs/2111.00396)
