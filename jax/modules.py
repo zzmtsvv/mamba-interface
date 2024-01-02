@@ -1,6 +1,7 @@
 import jax
 from flax import linen as nn
 from jax import numpy as jnp
+from associative_scan import associative_operator
 
 
 class RMSNorm(nn.Module):
@@ -69,18 +70,24 @@ class MambaBlock(nn.Module):
         batch_size, seq_len, inner_dim = x.shape
         latent_dim = A.shape[1]
 
+        # discretization of the continuous parameters
         deltaA = jnp.exp(jnp.einsum("b s d, d l -> b s d l", delta, A))
         deltaBx = jnp.einsum("b s d, b s l, b s d -> b s d l", delta, B, x)
         
-        u = jnp.zeros((batch_size, inner_dim, latent_dim))
-        y = []
-        for i in range(seq_len):
-            u = deltaA[:, i] * u + deltaBx[:, i]
-            yy = jnp.einsum("b d l, b l -> b d", u, C[:, i, :])
-            y.append(yy)
+        # u = jnp.zeros((batch_size, inner_dim, latent_dim))
+        # y = []
+        # for i in range(seq_len):
+        #     u = deltaA[:, i] * u + deltaBx[:, i]
+        #     yy = jnp.einsum("b d l, b l -> b d", u, C[:, i, :])
+        #     y.append(yy)
         
-        y = jnp.stack(y, axis=1)
-        y = y + u * D
+        # y = jnp.stack(y, axis=1)
+        # y = y + u * D
+
+        _, h = jax.lax.associative_scan(associative_operator, (deltaA, deltaBx), axis=1)
+        h = jnp.stack(h, axis=0)
+        y = jnp.einsum("b s d l, b s l -> b s d", h, C) + x * D
+
         return y
     
     def __call__(self, x: jax.Array) -> jax.Array:
