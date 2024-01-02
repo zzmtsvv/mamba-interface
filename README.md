@@ -5,7 +5,7 @@ implementation on the example of Mamba[1]. It looks more like a somewhat detaile
 jax, flax or state-space models[2].
 
 Feel free to contact me on any mistakes you find :)
-Unfortunately, my code lacks [associative scan](https://arxiv.org/abs/1709.04057) (yet)
+I have also tried to implement [associative scan](https://arxiv.org/abs/1709.04057) in the `jax` folder but probably it contains mistakes.
 
 This repo is based on the following ones: [annotated-mamba](https://github.com/srush/annotated-mamba), [mamba-minimal in torch](https://github.com/johnma2006/mamba-minimal), [the official implementation](https://github.com/state-spaces/mamba)
 
