@@ -5,6 +5,9 @@ implementation on the example of Mamba[1]. It looks more like a somewhat detaile
 jax, flax or state-space models[2].
 
 Feel free to contact me on any mistakes you find :)
+Unfortunately, my code lacks [associative scan](https://arxiv.org/abs/1709.04057) (yet)
+
+This repo is based on the following ones: [annotated-mamba](https://github.com/srush/annotated-mamba), [mamba-minimal in torch](https://github.com/johnma2006/mamba-minimal), [the official implementation](https://github.com/state-spaces/mamba)
 
 ## References
 [1] - Gu, Dao et al. (2023). [Mamba: Linear-Time Sequence Modeling with Selective State Spaces.](https://arxiv.org/abs/2312.00752) <br/>
